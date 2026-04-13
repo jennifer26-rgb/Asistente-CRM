@@ -12,8 +12,8 @@
 html,body{height:100%;font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
 .app{display:flex;height:100vh;overflow:hidden}
 .sidebar{width:230px;min-width:230px;background:var(--azul);display:flex;flex-direction:column}
-.sidebar-logo{padding:18px 16px 14px;border-bottom:1px solid rgba(255,255,255,.12);display:flex;align-items:center;gap:10px}
-.logo-img{height:36px;object-fit:contain;filter:brightness(0) invert(1)}
+.sidebar-logo{padding:16px;border-bottom:1px solid rgba(255,255,255,.12);display:flex;align-items:center;gap:10px}
+.logo-img{height:40px;width:auto;object-fit:contain}
 .logo-text .org{font-size:9px;color:rgba(255,255,255,.55);letter-spacing:.6px;text-transform:uppercase}
 .logo-text .name{font-size:12px;font-weight:600;color:white;line-height:1.2}
 .sidebar-nav{padding:10px 0;flex:1;overflow-y:auto}
@@ -44,7 +44,6 @@ html,body{height:100%;font-family:'DM Sans',system-ui,sans-serif;background:var(
 .btn-ghost{background:transparent;color:var(--text2);border:1px solid var(--border2)}
 .btn-ghost:hover:not(:disabled){background:var(--bg)}
 .btn-success{background:var(--success);color:white}
-.btn-danger{background:var(--danger);color:white}
 .btn-sm{padding:5px 10px;font-size:12px}.btn-lg{padding:11px 22px;font-size:14px;font-weight:600}
 .panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
 .panel-header{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:12px}
@@ -103,7 +102,7 @@ tbody tr:last-child td{border-bottom:none}tbody tr:hover td{background:var(--sur
 .success-title{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;color:var(--success)}
 .filter-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .toast-wrap{position:fixed;bottom:24px;right:24px;z-index:9999;display:flex;flex-direction:column;gap:8px}
-.toast{display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:var(--radius-sm);background:var(--surface);border:1px solid var(--border);box-shadow:0 4px 24px rgba(0,0,0,.12);font-size:13px;min-width:260px;animation:slideUp .25s ease}
+.toast{display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:var(--radius-sm);background:var(--surface);border:1px solid var(--border);box-shadow:0 4px 24px rgba(0,0,0,.12);font-size:13px;min-width:260px;max-width:400px;animation:slideUp .25s ease}
 .toast.ok{border-left:3px solid var(--success)}.toast.err{border-left:3px solid var(--danger)}.toast.inf{border-left:3px solid var(--azul)}
 @keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 ::-webkit-scrollbar{width:5px;height:5px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
@@ -114,7 +113,6 @@ tbody tr:last-child td{border-bottom:none}tbody tr:hover td{background:var(--sur
 <nav class="sidebar">
   <div class="sidebar-logo">
     <img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAGHAtMDASIAAhEBAxEB/8QAHQABAAMAAwEBAQAAAAAAAAAAAAYHCAQFCQMCAf/EAFcQAAEDAwIDBAMJCwkEBwkAAAABAgMEBQYHEQgSIRMxQVEUImEJFTI3UnF1gbMWGCM2OEJydJGhsjNiZXOClLG00iRWldMXJTVDREaSVFVjdoOEwcLD/8QAGwEBAAIDAQEAAAAAAAAAAAAAAAEFAwQGAgj/xAA8EQEAAQMDAgMGBAQFAgcAAAAAAQIDEQQFITFBElFhBhNxgZHRMrHB8CIzQqEUFTU2ciPxNFKCwtLh4v/aAAwDAQACEQMRAD8Ay6AD6DeAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA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AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/2Q==" class="logo-img" alt="Centro de Idiomas">
-    <div class="logo-text"><div class="org">Universidad Científica del Sur</div><div class="name">Centro de Idiomas</div></div>
   </div>
   <div class="sidebar-nav">
     <div class="nav-group-label">Principal</div>
@@ -173,10 +171,10 @@ tbody tr:last-child td{border-bottom:none}tbody tr:hover td{background:var(--sur
         <span class="panel-title">Exportaciones recientes</span>
         <div style="display:flex;gap:8px">
           <button class="btn btn-ghost btn-sm" onclick="goTo('historial')">Ver historial →</button>
-          <button class="btn btn-ghost btn-sm" onclick="exportarDatos()" title="Exportar datos para llevarlos a otro equipo">📤 Backup</button>
+          <button class="btn btn-ghost btn-sm" onclick="exportarDatos()">📤 Backup</button>
         </div>
       </div>
-      <div class="table-wrap"><table><thead><tr><th>Fecha/Hora</th><th>Tipo</th><th>Alumno</th><th>Folio</th><th>Resolución</th><th>Descargar</th></tr></thead><tbody id="d-recientes"><tr><td colspan="6" style="text-align:center;padding:32px;color:var(--text3)">Sin exportaciones. <span style="color:var(--azul);cursor:pointer;text-decoration:underline" onclick="goTo('nuevo')">Crea el primero →</span></td></tr></tbody></table></div>
+      <div class="table-wrap"><table><thead><tr><th>Fecha/Hora</th><th>Tipo</th><th>Alumno</th><th>Folio</th><th>Resolución</th><th>Acción</th></tr></thead><tbody id="d-recientes"><tr><td colspan="6" style="text-align:center;padding:32px;color:var(--text3)">Sin exportaciones. <span style="color:var(--azul);cursor:pointer;text-decoration:underline" onclick="goTo('nuevo')">Crea el primero →</span></td></tr></tbody></table></div>
     </div>
   </div>
 
@@ -224,7 +222,7 @@ tbody tr:last-child td{border-bottom:none}tbody tr:hover td{background:var(--sur
         <div class="export-success">
           <div class="success-icon">✅</div>
           <div class="success-title">¡Documento exportado y registrado!</div>
-          <div style="font-size:13px;color:var(--text3);max-width:360px;text-align:center">Guardado en el historial del sistema.</div>
+          <div style="font-size:13px;color:var(--text3);max-width:380px;text-align:center">Guardado en el historial. Puedes regenerarlo en cualquier momento desde Historial.</div>
           <div style="padding:14px 24px;background:var(--surface2);border-radius:var(--radius);border:1px solid var(--border);text-align:center;max-width:460px">
             <div style="font-size:13px;font-weight:600" id="export-nombre"></div>
             <div id="export-res-badge" style="display:none;margin-top:6px;background:var(--naranja-50);color:var(--naranja-h);padding:4px 14px;border-radius:20px;font-size:12px;font-weight:700"></div>
@@ -253,16 +251,22 @@ tbody tr:last-child td{border-bottom:none}tbody tr:hover td{background:var(--sur
           <button class="btn btn-primary" onclick="filtrarHistorial()">Filtrar</button>
           <button class="btn btn-ghost" onclick="limpiarFiltros()">Limpiar</button>
           <div style="margin-left:auto;display:flex;gap:8px">
-            <button class="btn btn-success" onclick="exportarCSV()">📊 Exportar CSV</button>
-            <button class="btn btn-naranja" onclick="exportarDatos()" title="Genera un .json con todo el historial y resolución para trasladar a otro equipo">📤 Backup JSON</button>
-            <button class="btn btn-ghost" onclick="importarDatos()" title="Importa un backup .json en este equipo">📥 Restaurar</button>
+            <button class="btn btn-success" onclick="exportarCSV()" title="Exportar tabla como CSV para Excel">📊 Exportar CSV</button>
+            <button class="btn btn-naranja" onclick="exportarDatos()" title="Backup completo con historial y resolución">📤 Backup JSON</button>
+            <button class="btn btn-ghost" onclick="importarDatos()" title="Importar backup de otro equipo">📥 Restaurar</button>
           </div>
         </div>
       </div>
     </div>
     <div class="panel">
-      <div class="panel-header"><span class="panel-title">Registros</span><span style="font-size:12px;color:var(--text3)" id="hist-count">0 registros</span></div>
-      <div class="table-wrap"><table><thead><tr><th>Fecha/Hora</th><th>Tipo</th><th>Alumno</th><th>Código</th><th>Folio</th><th>Resolución</th><th>Descargar</th></tr></thead><tbody id="hist-tbody"><tr><td colspan="7" style="text-align:center;padding:40px;color:var(--text3)">Sin registros. <span style="color:var(--azul);cursor:pointer;text-decoration:underline" onclick="goTo('nuevo')">Crea un trámite →</span></td></tr></tbody></table></div>
+      <div class="panel-header">
+        <span class="panel-title">Registros</span>
+        <span style="font-size:12px;color:var(--text3)" id="hist-count">0 registros</span>
+      </div>
+      <div class="table-wrap"><table><thead><tr><th>Fecha/Hora</th><th>Tipo</th><th>Alumno</th><th>Código</th><th>Folio</th><th>Resolución</th><th>Acción</th></tr></thead><tbody id="hist-tbody"><tr><td colspan="7" style="text-align:center;padding:40px;color:var(--text3)">Sin registros. <span style="color:var(--azul);cursor:pointer;text-decoration:underline" onclick="goTo('nuevo')">Crea un trámite →</span></td></tr></tbody></table></div>
+    </div>
+    <div style="margin-top:12px;padding:10px 14px;background:var(--azul-50);border-radius:8px;border:1px solid var(--azul-100);font-size:12px;color:var(--azul)">
+      💡 <strong>Regenerar:</strong> Los documentos se regeneran desde los campos guardados. La resolución original se preserva exactamente.
     </div>
   </div>
 
@@ -275,9 +279,9 @@ tbody tr:last-child td{border-bottom:none}tbody tr:hover td{background:var(--sur
     <div class="panel" style="margin-top:16px">
       <div class="panel-header"><span class="panel-title">ℹ️ Información técnica</span></div>
       <div class="panel-body"><div class="g3">
-        <div style="padding:14px;background:var(--surface2);border-radius:8px;border:1px solid var(--border)"><div style="font-weight:600;margin-bottom:8px;color:var(--azul)">📄 Motor DOCX</div><div style="font-size:12px;color:var(--text2);line-height:1.7">JSZip + reemplazo XML. Normaliza runs partidos y espacios en placeholders. Plantillas embebidas en base64.</div></div>
-        <div style="padding:14px;background:var(--surface2);border-radius:8px;border:1px solid var(--border)"><div style="font-weight:600;margin-bottom:8px;color:var(--naranja)">🎨 Motor PPTX</div><div style="font-size:12px;color:var(--text2);line-height:1.7">JSZip + XML interno. Fix para <code>[ HORA INGLES]</code> con espacios. Une runs por párrafo.</div></div>
-        <div style="padding:14px;background:var(--surface2);border-radius:8px;border:1px solid var(--border)"><div style="font-weight:600;margin-bottom:8px;color:var(--success)">📤 Portabilidad</div><div style="font-size:12px;color:var(--text2);line-height:1.7">Exporta e importa historial + resolución como JSON. Combina o reemplaza datos entre equipos.</div></div>
+        <div style="padding:14px;background:var(--surface2);border-radius:8px;border:1px solid var(--border)"><div style="font-weight:600;margin-bottom:8px;color:var(--azul)">📄 Motor DOCX/PPTX</div><div style="font-size:12px;color:var(--text2);line-height:1.7">JSZip + XML. Normaliza runs partidos y espacios en placeholders como <code>[ HORA INGLES]</code>.</div></div>
+        <div style="padding:14px;background:var(--surface2);border-radius:8px;border:1px solid var(--border)"><div style="font-weight:600;margin-bottom:8px;color:var(--naranja)">💾 Almacenamiento</div><div style="font-size:12px;color:var(--text2);line-height:1.7">Solo metadatos en localStorage (sin buffers). Sin límite de quota. Documentos se regeneran desde campos.</div></div>
+        <div style="padding:14px;background:var(--surface2);border-radius:8px;border:1px solid var(--border)"><div style="font-weight:600;margin-bottom:8px;color:var(--success)">📤 Portabilidad</div><div style="font-size:12px;color:var(--text2);line-height:1.7">Exporta/importa historial + resolución como JSON. Modo combinar o reemplazar entre equipos.</div></div>
       </div></div>
     </div>
   </div>
@@ -296,10 +300,10 @@ const TEMPLATES_DATA = {
 };
 
 // ═══════════════════════════════════════════════════════
-//  CENTRO DE IDIOMAS — Motor de documentos v2
-//  - Plantilla Diploma Inglés corregida
-//  - Fix: [ HORA INGLES] con espacios internos
-//  - Import/Export de datos (historial + resolución)
+//  CENTRO DE IDIOMAS — Motor v3
+//  Fix 1: localStorage quota — NO guardar buffers binarios
+//  Fix 2: Logo corregido
+//  Fix 3: Import/Export completo
 // ═══════════════════════════════════════════════════════
 
 const MESES=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
@@ -320,12 +324,34 @@ const TIPO_STATUS={CONSTANCIA:'s-info',CONSTANCIA_TOEFL:'s-purple',BACHILLER:'s-
 const TIPO_COLORES={CONSTANCIA:'var(--azul)',CONSTANCIA_TOEFL:'#6B46C1',BACHILLER:'var(--azul-h)',DIPLOMA_INGLES:'var(--naranja)',DIPLOMA_PORTUGUES:'var(--naranja-h)',RESOLUCION:'#D69E2E'};
 const TIPO_NOMBRES={CONSTANCIA:'Constancia',CONSTANCIA_TOEFL:'Constancia TOEFL',BACHILLER:'Bachiller',DIPLOMA_INGLES:'Diploma Inglés',DIPLOMA_PORTUGUES:'Diploma Portugués',RESOLUCION:'Resolución'};
 
-// STATE
-let historial=JSON.parse(localStorage.getItem('ci-historial')||'[]');
-let contadorResolucion=parseInt(localStorage.getItem('ci-contador')||'111');
-let selectedTipo=null, formValues={}, previewDocBuffer=null, previewFormato=null, exportDocBuffer=null, exportFormato=null, currentStep=1;
+// ── STATE ─────────────────────────────────────────────
+// IMPORTANTE: historial NO guarda buffers binarios (_buf)
+// Los documentos se regeneran al descargar desde historial
+let historial = JSON.parse(localStorage.getItem('ci-historial') || '[]');
+let contadorResolucion = parseInt(localStorage.getItem('ci-contador') || '111');
+let selectedTipo=null, formValues={}, previewDocBuffer=null, previewFormato=null,
+    exportDocBuffer=null, exportFormato=null, exportCampos=null, exportTipo=null,
+    currentStep=1;
 
-// NAVIGATION
+// ── STORAGE HELPER ────────────────────────────────────
+// Guarda solo metadatos, NUNCA buffers binarios
+function guardarHistorial() {
+  // Limpiar cualquier _buf residual antes de guardar
+  const limpio = historial.map(({_buf, ...rest}) => rest);
+  try {
+    localStorage.setItem('ci-historial', JSON.stringify(limpio.slice(0,500)));
+  } catch(e) {
+    // Si aún excede, recortar más
+    try {
+      localStorage.setItem('ci-historial', JSON.stringify(limpio.slice(0,100)));
+      toast('Historial recortado a 100 registros por límite de almacenamiento','inf');
+    } catch(e2) {
+      toast('No se pudo guardar en localStorage: '+e2.message,'err');
+    }
+  }
+}
+
+// ── NAVIGATION ────────────────────────────────────────
 const PAGE_META={
   dashboard:{title:'Dashboard',sub:'Resumen de actividad del sistema'},
   nuevo:{title:'Nuevo Trámite',sub:'Genera un nuevo documento'},
@@ -346,7 +372,7 @@ function goTo(page){
   if(page==='nuevo')renderNuevo();
 }
 
-// UTILS
+// ── UTILS ─────────────────────────────────────────────
 function fechaLarga(str){const[a,m,d]=str.split('-').map(Number);return `${d} de ${MESES[m-1]} del ${a}`;}
 function fechaHoy(){const n=new Date();return `${n.getDate()} de ${MESES[n.getMonth()]} del ${n.getFullYear()}`;}
 function anioHoy(){return String(new Date().getFullYear());}
@@ -385,17 +411,17 @@ function aplicarReglas(tipo,campos,resNum){
 }
 function escXML(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 
-// TOAST
+// ── TOAST ─────────────────────────────────────────────
 function toast(msg,type='inf'){
   const wrap=document.getElementById('toast-wrap');
   const el=document.createElement('div');
   el.className=`toast ${type}`;
-  el.innerHTML=`<span>${type==='ok'?'✅':type==='err'?'❌':'ℹ️'}</span> ${msg}`;
+  el.innerHTML=`<span>${type==='ok'?'✅':type==='err'?'❌':'ℹ️'}</span><span style="flex:1">${msg}</span>`;
   wrap.appendChild(el);
-  setTimeout(()=>el.remove(),4500);
+  setTimeout(()=>el.remove(),5000);
 }
 
-// DOWNLOAD
+// ── DOWNLOAD ──────────────────────────────────────────
 function downloadBuffer(buf,filename,formato){
   const mimes={DOCX:'application/vnd.openxmlformats-officedocument.wordprocessingml.document',PPTX:'application/vnd.openxmlformats-officedocument.presentationml.presentation'};
   const ext=formato.toLowerCase();
@@ -406,153 +432,108 @@ function downloadBuffer(buf,filename,formato){
   URL.revokeObjectURL(url);
 }
 
-// ═══════════════════════════════════════════════════════
-//  IMPORT / EXPORT DE DATOS
-// ═══════════════════════════════════════════════════════
-
+// ── IMPORT / EXPORT ───────────────────────────────────
 function exportarDatos(){
   const payload={
-    version:2,
+    version:3,
     exportadoEn:new Date().toISOString(),
     contadorResolucion,
-    historial: historial.map(r=>{
-      // Excluir el buffer binario del export JSON (muy pesado)
-      const {_buf, ...rest} = r;
-      return rest;
-    })
+    historial: historial.map(({_buf,...rest})=>rest) // sin buffers
   };
   const json=JSON.stringify(payload,null,2);
   const blob=new Blob([json],{type:'application/json'});
   const url=URL.createObjectURL(blob);
   const a=document.createElement('a');
-  const fecha=new Date().toISOString().split('T')[0];
   a.href=url;
-  a.download=`ci-datos-backup-${fecha}.json`;
+  a.download=`ci-backup-${new Date().toISOString().split('T')[0]}.json`;
   a.click();
   URL.revokeObjectURL(url);
-  toast(`Datos exportados: ${historial.length} registros, resolución actual ${contadorResolucion}`,'ok');
+  toast(`Backup exportado: ${historial.length} registros, resolución actual ${contadorResolucion}`,'ok');
 }
 
 function importarDatos(){
   const input=document.createElement('input');
-  input.type='file';
-  input.accept='.json';
+  input.type='file'; input.accept='.json';
   input.onchange=async(e)=>{
-    const file=e.target.files[0];
-    if(!file){return;}
+    const file=e.target.files[0]; if(!file)return;
     try{
-      const text=await file.text();
-      const payload=JSON.parse(text);
-      // Validar estructura
-      if(!payload.version||!Array.isArray(payload.historial)){
-        toast('Archivo inválido: no es un backup de CI-Docs','err');
-        return;
-      }
-      // Mostrar modal de confirmación
-      const resActual=payload.contadorResolucion||111;
-      const numRegs=payload.historial.length;
-      const exportDate=payload.exportadoEn?new Date(payload.exportadoEn).toLocaleString('es-PE'):'desconocida';
-      mostrarModalImport(payload, resActual, numRegs, exportDate);
-    }catch(err){
-      toast('Error al leer el archivo: '+err.message,'err');
-    }
+      const payload=JSON.parse(await file.text());
+      if(!payload.version||!Array.isArray(payload.historial)){toast('Archivo inválido','err');return;}
+      const resBackup=payload.contadorResolucion||111;
+      mostrarModalImport(payload,resBackup,payload.historial.length,
+        payload.exportadoEn?new Date(payload.exportadoEn).toLocaleString('es-PE'):'desconocida');
+    }catch(err){toast('Error al leer: '+err.message,'err');}
   };
   input.click();
 }
 
-function mostrarModalImport(payload, resActual, numRegs, exportDate){
-  // Remove existing modal
+function mostrarModalImport(payload,resBackup,numRegs,exportDate){
   document.getElementById('import-modal')?.remove();
-  
   const modal=document.createElement('div');
   modal.id='import-modal';
-  modal.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:10000;display:flex;align-items:center;justify-content:center;padding:20px';
+  modal.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:10000;display:flex;align-items:center;justify-content:center;padding:20px';
   modal.innerHTML=`
-    <div style="background:white;border-radius:16px;padding:28px;max-width:480px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,0.3)">
+    <div style="background:white;border-radius:16px;padding:28px;max-width:480px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.3)">
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
         <div style="font-size:28px">📥</div>
-        <div>
-          <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700">Importar datos</div>
-          <div style="font-size:12px;color:var(--text3)">Backup del ${exportDate}</div>
-        </div>
+        <div><div style="font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700">Importar datos</div><div style="font-size:12px;color:var(--text3)">Backup del ${exportDate}</div></div>
       </div>
       <div style="background:var(--surface2);border-radius:10px;padding:14px;margin-bottom:18px;font-size:13px">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
           <div><span style="color:var(--text3)">Registros en backup:</span><br><strong style="font-size:18px;color:var(--azul)">${numRegs}</strong></div>
-          <div><span style="color:var(--text3)">Resolución en backup:</span><br><strong style="font-size:18px;color:var(--naranja)">${resActual}</strong></div>
+          <div><span style="color:var(--text3)">Resolución en backup:</span><br><strong style="font-size:18px;color:var(--naranja)">${resBackup}</strong></div>
           <div><span style="color:var(--text3)">Registros actuales:</span><br><strong>${historial.length}</strong></div>
           <div><span style="color:var(--text3)">Resolución actual:</span><br><strong>${contadorResolucion}</strong></div>
         </div>
       </div>
       <div style="font-size:13px;font-weight:600;margin-bottom:10px;color:var(--text2)">¿Cómo deseas importar?</div>
       <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px">
-        <label style="display:flex;align-items:flex-start;gap:10px;padding:12px;border:2px solid var(--border);border-radius:10px;cursor:pointer;transition:border .15s" id="opt-merge-label">
-          <input type="radio" name="import-mode" value="merge" checked style="margin-top:2px;accent-color:var(--azul)">
-          <div>
-            <div style="font-weight:600;font-size:13px">Combinar (recomendado)</div>
-            <div style="font-size:11px;color:var(--text3)">Agrega los registros del backup a los actuales. El contador de resolución se actualiza solo si el backup tiene un número mayor.</div>
-          </div>
+        <label style="display:flex;align-items:flex-start;gap:10px;padding:12px;border:2px solid var(--azul);border-radius:10px;cursor:pointer" id="lbl-merge">
+          <input type="radio" name="imode" value="merge" checked style="margin-top:2px;accent-color:var(--azul)">
+          <div><div style="font-weight:600;font-size:13px">Combinar (recomendado)</div><div style="font-size:11px;color:var(--text3)">Agrega registros nuevos a los actuales. Contador se actualiza solo si el backup tiene número mayor.</div></div>
         </label>
-        <label style="display:flex;align-items:flex-start;gap:10px;padding:12px;border:2px solid var(--border);border-radius:10px;cursor:pointer;transition:border .15s" id="opt-replace-label">
-          <input type="radio" name="import-mode" value="replace" style="margin-top:2px;accent-color:var(--azul)">
-          <div>
-            <div style="font-weight:600;font-size:13px">Reemplazar</div>
-            <div style="font-size:11px;color:var(--text3)">Borra el historial actual y lo reemplaza completamente con el del backup. El contador de resolución se actualiza al del backup.</div>
-          </div>
+        <label style="display:flex;align-items:flex-start;gap:10px;padding:12px;border:2px solid var(--border);border-radius:10px;cursor:pointer" id="lbl-replace">
+          <input type="radio" name="imode" value="replace" style="margin-top:2px;accent-color:var(--azul)">
+          <div><div style="font-weight:600;font-size:13px">Reemplazar</div><div style="font-size:11px;color:var(--text3)">Borra el historial actual y carga el del backup. El contador se actualiza al del backup.</div></div>
         </label>
       </div>
       <div style="display:flex;gap:10px;justify-content:flex-end">
         <button class="btn btn-ghost" onclick="document.getElementById('import-modal').remove()">Cancelar</button>
-        <button class="btn btn-primary" onclick="confirmarImport(${JSON.stringify(JSON.stringify(payload)).replace(/</g,'\\u003c')})">Importar datos</button>
+        <button class="btn btn-primary" id="btn-confirm-import">Importar datos</button>
       </div>
     </div>`;
-  
-  // Highlight selected radio
-  modal.querySelectorAll('input[type=radio]').forEach(radio=>{
-    radio.addEventListener('change',()=>{
-      modal.querySelectorAll('label[id^=opt-]').forEach(l=>l.style.borderColor='var(--border)');
-      radio.closest('label').style.borderColor='var(--azul)';
+  modal.querySelectorAll('input[type=radio]').forEach(r=>{
+    r.addEventListener('change',()=>{
+      document.getElementById('lbl-merge').style.borderColor=r.value==='merge'?'var(--azul)':'var(--border)';
+      document.getElementById('lbl-replace').style.borderColor=r.value==='replace'?'var(--azul)':'var(--border)';
     });
   });
-  modal.querySelector('#opt-merge-label').style.borderColor='var(--azul)';
-  
   document.body.appendChild(modal);
+  document.getElementById('btn-confirm-import').onclick=()=>confirmarImport(payload);
 }
 
-function confirmarImport(payloadStr){
-  const payload=JSON.parse(payloadStr);
-  const mode=document.querySelector('input[name=import-mode]:checked')?.value||'merge';
+function confirmarImport(payload){
+  const mode=document.querySelector('input[name=imode]:checked')?.value||'merge';
   document.getElementById('import-modal')?.remove();
-  
   if(mode==='replace'){
-    historial=payload.historial;
+    historial=payload.historial.map(({_buf,...r})=>r);
     contadorResolucion=payload.contadorResolucion||111;
-    toast(`Reemplazado: ${historial.length} registros importados, resolución: ${contadorResolucion}`,'ok');
+    toast(`Reemplazado: ${historial.length} registros, resolución: ${contadorResolucion}`,'ok');
   } else {
-    // Merge: add records not already in current historial (by id)
-    const existingIds=new Set(historial.map(r=>r.id));
-    const nuevos=payload.historial.filter(r=>!existingIds.has(r.id));
+    const ids=new Set(historial.map(r=>r.id));
+    const nuevos=payload.historial.filter(r=>!ids.has(r.id)).map(({_buf,...r})=>r);
     historial=[...historial,...nuevos].sort((a,b)=>new Date(b.fechaHora)-new Date(a.fechaHora));
-    // Update counter only if backup has higher number
-    if(payload.contadorResolucion>contadorResolucion){
-      contadorResolucion=payload.contadorResolucion;
-    }
-    toast(`Combinado: ${nuevos.length} registros nuevos añadidos. Resolución: ${contadorResolucion}`,'ok');
+    if(payload.contadorResolucion>contadorResolucion)contadorResolucion=payload.contadorResolucion;
+    toast(`Combinado: ${nuevos.length} registros nuevos. Resolución: ${contadorResolucion}`,'ok');
   }
-  
-  // Save to localStorage
-  localStorage.setItem('ci-historial',JSON.stringify(historial.slice(0,500)));
+  guardarHistorial();
   localStorage.setItem('ci-contador',String(contadorResolucion));
-  
-  // Refresh UI
   document.getElementById('res-badge').textContent=nextResolucion();
   renderDashboard();
-  if(document.getElementById('s-historial').classList.contains('active')) renderHistorial();
+  if(document.getElementById('s-historial').classList.contains('active'))renderHistorial();
 }
 
-// ═══════════════════════════════════════════════════════
-//  DASHBOARD
-// ═══════════════════════════════════════════════════════
+// ── DASHBOARD ─────────────────────────────────────────
 function renderDashboard(){
   const total=historial.length;
   const consts=historial.filter(r=>r.tipo==='CONSTANCIA'||r.tipo==='CONSTANCIA_TOEFL').length;
@@ -573,19 +554,17 @@ function renderDashboard(){
   if(total===0){tiposEl.innerHTML='<div style="color:var(--text3);text-align:center;padding:20px">Sin datos aún. Crea tu primer trámite.</div>';}
   else{tiposEl.innerHTML=Object.entries(tipos).map(([k,v])=>{const pct=total>0?Math.round(v/total*100):0;return `<div style="margin-bottom:10px"><div style="display:flex;justify-content:space-between;margin-bottom:4px"><span style="font-size:12px;font-weight:500">${TIPO_NOMBRES[k]}</span><span style="font-size:12px;font-weight:700;color:${TIPO_COLORES[k]}">${v}</span></div><div class="prog-bar"><div class="prog-fill" style="width:${pct}%;background:${TIPO_COLORES[k]}"></div></div></div>`;}).join('');}
   const tbody=document.getElementById('d-recientes');
-  if(historial.length===0){tbody.innerHTML='<tr><td colspan="6" style="text-align:center;padding:32px;color:var(--text3)">Sin exportaciones. <span style="color:var(--azul);cursor:pointer;text-decoration:underline" onclick="goTo(\'nuevo\')">Crea el primero →</span></td></tr>';}
-  else{tbody.innerHTML=historial.slice(0,8).map(r=>`<tr><td style="color:var(--text3);font-size:12px">${new Date(r.fechaHora).toLocaleString('es-PE',{dateStyle:'short',timeStyle:'short'})}</td><td><span class="status ${TIPO_STATUS[r.tipo]||'s-info'}">${TIPO_NOMBRES[r.tipo]||r.tipo}</span></td><td style="font-weight:500">${r.campos.APELLIDO||''} ${r.campos.NOMBRE||''}</td><td>${r.folio}</td><td>${r.resolucion||'—'}</td><td><button class="btn btn-ghost btn-sm" onclick="redownload('${r.id}')">⬇ Descargar</button></td></tr>`).join('');}
+  if(!historial.length){tbody.innerHTML='<tr><td colspan="6" style="text-align:center;padding:32px;color:var(--text3)">Sin exportaciones. <span style="color:var(--azul);cursor:pointer;text-decoration:underline" onclick="goTo(\'nuevo\')">Crea el primero →</span></td></tr>';}
+  else{tbody.innerHTML=historial.slice(0,8).map(r=>`<tr><td style="color:var(--text3);font-size:12px">${new Date(r.fechaHora).toLocaleString('es-PE',{dateStyle:'short',timeStyle:'short'})}</td><td><span class="status ${TIPO_STATUS[r.tipo]||'s-info'}">${TIPO_NOMBRES[r.tipo]||r.tipo}</span></td><td style="font-weight:500">${r.campos.APELLIDO||''} ${r.campos.NOMBRE||''}</td><td>${r.folio}</td><td>${r.resolucion||'—'}</td><td><button class="btn btn-ghost btn-sm" onclick="redownload('${r.id}')">⬇ Regenear</button></td></tr>`).join('');}
   document.getElementById('d-semana').textContent=historial.filter(r=>(new Date()-new Date(r.fechaHora))<7*86400000).length;
 }
 
-// ═══════════════════════════════════════════════════════
-//  HISTORIAL
-// ═══════════════════════════════════════════════════════
+// ── HISTORIAL ─────────────────────────────────────────
 function renderHistorial(filtered){
   const data=filtered||historial;
   document.getElementById('hist-count').textContent=`${data.length} registro${data.length!==1?'s':''}`;
   const tbody=document.getElementById('hist-tbody');
-  if(data.length===0){tbody.innerHTML='<tr><td colspan="7" style="text-align:center;padding:40px;color:var(--text3)">Sin registros. <span style="color:var(--azul);cursor:pointer;text-decoration:underline" onclick="goTo(\'nuevo\')">Crea un trámite →</span></td></tr>';return;}
+  if(!data.length){tbody.innerHTML='<tr><td colspan="7" style="text-align:center;padding:40px;color:var(--text3)">Sin registros. <span style="color:var(--azul);cursor:pointer;text-decoration:underline" onclick="goTo(\'nuevo\')">Crea un trámite →</span></td></tr>';return;}
   tbody.innerHTML=data.map(r=>`<tr>
     <td style="color:var(--text3);font-size:12px;white-space:nowrap">${new Date(r.fechaHora).toLocaleString('es-PE',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'})}</td>
     <td><span class="status ${TIPO_STATUS[r.tipo]||'s-info'}">${TIPO_NOMBRES[r.tipo]||r.tipo}</span></td>
@@ -593,7 +572,7 @@ function renderHistorial(filtered){
     <td style="font-family:monospace;font-size:12px">${r.campos.CODIGO||'—'}</td>
     <td style="font-family:monospace;font-weight:600">${r.folio}</td>
     <td>${r.resolucion?`<span style="background:var(--naranja-50);color:var(--naranja-h);padding:2px 8px;border-radius:4px;font-size:12px;font-weight:600">${r.resolucion}</span>`:'<span style="color:var(--text3)">—</span>'}</td>
-    <td><button class="btn btn-ghost btn-sm" onclick="redownload('${r.id}')">⬇ Descargar</button></td>
+    <td><button class="btn btn-ghost btn-sm" onclick="redownload('${r.id}')">⬇ Regenerar</button></td>
   </tr>`).join('');
 }
 function filtrarHistorial(){
@@ -607,9 +586,7 @@ function filtrarHistorial(){
   renderHistorial(data);
 }
 function limpiarFiltros(){
-  document.getElementById('f-tipo').value='';
-  document.getElementById('f-apellido').value='';
-  document.getElementById('f-folio').value='';
+  ['f-tipo','f-apellido','f-folio'].forEach(id=>document.getElementById(id).value='');
   renderHistorial();
 }
 function exportarCSV(){
@@ -623,13 +600,29 @@ function exportarCSV(){
   toast('CSV exportado – ábrelo con Excel','ok');
 }
 
-// ═══════════════════════════════════════════════════════
-//  PLANTILLAS PAGE
-// ═══════════════════════════════════════════════════════
+// ── REDOWNLOAD (regenerar desde campos guardados) ─────
+async function redownload(id){
+  const reg=historial.find(r=>r.id===id);
+  if(!reg){toast('Registro no encontrado','err');return;}
+  const p=PLANTILLAS[reg.tipo];
+  if(!p){toast('Tipo de plantilla desconocido','err');return;}
+  // Reconstruir valores con reglas (sin incrementar resolución)
+  const valores=aplicarReglas(reg.tipo, reg.campos, null);
+  // Si tenía resolución, usarla tal cual
+  if(reg.resolucion) valores['RESOLUCION']=reg.resolucion;
+  try{
+    const buf=await procesarPlantilla(p.archivo,p.formato,valores);
+    downloadBuffer(buf,reg.nombreArchivo,p.formato);
+    toast('Documento regenerado y descargado','ok');
+  }catch(e){
+    toast('Error al regenerar: '+e.message,'err');
+  }
+}
+
+// ── PLANTILLAS PAGE ───────────────────────────────────
 let selPlantilla=null;
 function renderPlantillas(){
-  const list=document.getElementById('plantillas-list');
-  list.innerHTML=Object.entries(PLANTILLAS).map(([tipo,p])=>`
+  document.getElementById('plantillas-list').innerHTML=Object.entries(PLANTILLAS).map(([tipo,p])=>`
     <div onclick="seleccionarPlantilla('${tipo}')" id="ptl-item-${tipo}" style="padding:14px 18px;cursor:pointer;border-bottom:1px solid var(--border);border-left:3px solid transparent;transition:all .15s">
       <div style="display:flex;justify-content:space-between;align-items:flex-start">
         <div><div style="font-weight:600;font-size:13px">${p.icon} ${p.nombre}</div><div style="font-size:11px;color:var(--text3);margin-top:2px;font-family:monospace">${p.archivo}</div></div>
@@ -640,17 +633,12 @@ function renderPlantillas(){
   seleccionarPlantilla('CONSTANCIA');
 }
 function seleccionarPlantilla(tipo){
-  selPlantilla=tipo;
-  const p=PLANTILLAS[tipo];
+  selPlantilla=tipo; const p=PLANTILLAS[tipo];
   document.getElementById('ptl-detail-title').textContent=p.nombre;
   document.querySelectorAll('[id^="ptl-item-"]').forEach(el=>{el.style.background='transparent';el.style.borderLeft='3px solid transparent';});
   const it=document.getElementById('ptl-item-'+tipo);
   if(it){it.style.background='var(--azul-50)';it.style.borderLeft='3px solid var(--azul)';}
-  const autoCampos=['FECHA ACTUAL'];
-  if(tipo==='DIPLOMA_INGLES')autoCampos.push('HORA INGLES');
-  if(tipo==='DIPLOMA_PORTUGUES')autoCampos.push('HORA PORTUGUES');
-  if(p.tieneRes)autoCampos.push('RESOLUCION','AÑO');
-  const allPH=[...p.campos,...autoCampos];
+  const autoCampos=['FECHA ACTUAL',...(tipo==='DIPLOMA_INGLES'?['HORA INGLES']:tipo==='DIPLOMA_PORTUGUES'?['HORA PORTUGUES']:[]),...(p.tieneRes?['RESOLUCION','AÑO']:[])];
   document.getElementById('ptl-detail').innerHTML=`
     <div style="margin-bottom:14px;padding:12px;background:var(--surface2);border-radius:8px;border:1px solid var(--border);font-size:12px">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
@@ -660,8 +648,8 @@ function seleccionarPlantilla(tipo){
       </div>
     </div>
     <div style="margin-bottom:14px">
-      <div style="font-size:12px;font-weight:600;color:var(--text2);margin-bottom:8px">Placeholders (${allPH.length})</div>
-      <div class="ph-list">${allPH.map(ph=>`<span class="ph-tag ${CAMPOS_AUTO.has(ph)?'ph-a':ph==='NIVEL'||ph==='PROGRAMA'?'ph-s':'ph-m'}">[${ph}]</span>`).join('')}</div>
+      <div style="font-size:12px;font-weight:600;color:var(--text2);margin-bottom:8px">Placeholders (${[...p.campos,...autoCampos].length})</div>
+      <div class="ph-list">${[...p.campos,...autoCampos].map(ph=>`<span class="ph-tag ${CAMPOS_AUTO.has(ph)?'ph-a':ph==='NIVEL'||ph==='PROGRAMA'?'ph-s':'ph-m'}">[${ph}]</span>`).join('')}</div>
     </div>
     <div style="margin-bottom:14px">
       <div style="font-size:12px;font-weight:600;color:var(--text2);margin-bottom:8px">Campos del formulario (${p.campos.length})</div>
@@ -672,9 +660,7 @@ function seleccionarPlantilla(tipo){
     <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="goTo('nuevo')">＋ Usar esta plantilla</button>`;
 }
 
-// ═══════════════════════════════════════════════════════
-//  NUEVO TRÁMITE
-// ═══════════════════════════════════════════════════════
+// ── NUEVO TRÁMITE ─────────────────────────────────────
 function renderNuevo(){
   currentStep=1; selectedTipo=null; formValues={};
   updateStepper();
@@ -702,10 +688,8 @@ function selectTramite(tipo){
 function irStep2(){if(!selectedTipo){toast('Selecciona un tipo de trámite','err');return;}irStep(2);}
 function irStep(n){
   document.getElementById('step'+currentStep).style.display='none';
-  currentStep=n;
-  document.getElementById('step'+n).style.display='block';
-  updateStepper();
-  if(n===2)buildForm();
+  currentStep=n; document.getElementById('step'+n).style.display='block';
+  updateStepper(); if(n===2)buildForm();
 }
 function updateStepper(){
   const labels=['Seleccionar','Completar','Previsualizar','Exportar'];
@@ -737,8 +721,9 @@ function buildForm(){
     ${p.campos.some(c=>c.includes('FECHA')||c==='DESDE'||c==='HASTA')?'<div class="auto-field af-green"><span>📅</span><div><div style="font-weight:600">FECHAS</div><div style="font-size:11px;opacity:.8">Formato largo en español</div></div></div>':''}`;
 }
 function validar(){
-  const p=PLANTILLAS[selectedTipo];
-  for(const c of p.campos){if(!formValues[c]||String(formValues[c]).trim()==='')return `El campo "${c}" es obligatorio`;}
+  for(const c of PLANTILLAS[selectedTipo].campos){
+    if(!formValues[c]||String(formValues[c]).trim()==='')return `El campo "${c}" es obligatorio`;
+  }
   return null;
 }
 async function generarPreview(){
@@ -769,12 +754,25 @@ async function exportarDocumento(){
     if(p.tieneRes){contadorResolucion++;localStorage.setItem('ci-contador',String(contadorResolucion));resNum=contadorResolucion;}
     const valores=aplicarReglas(selectedTipo,formValues,resNum);
     const buf=await procesarPlantilla(p.archivo,p.formato,valores);
-    exportDocBuffer=buf;exportFormato=p.formato;
+    // Guardar para descarga inmediata
+    exportDocBuffer=buf; exportFormato=p.formato;
+    exportCampos={...formValues}; exportTipo=selectedTipo;
     const nombre=nombreArchivo(selectedTipo,formValues);
     const resStr=resNum?`${String(resNum).padStart(3,'0')} – ${anioHoy()}`:null;
-    const reg={id:Date.now().toString(36)+Math.random().toString(36).slice(2),fechaHora:new Date().toISOString(),usuario:'Operador',tipo:selectedTipo,campos:{...formValues},folio:String(formValues['FOLIO']||''),resolucion:resStr,nombreArchivo:nombre,_buf:Array.from(new Uint8Array(buf)),_formato:p.formato};
+    // Registro SIN buffer binario (solución al error de quota)
+    const reg={
+      id:Date.now().toString(36)+Math.random().toString(36).slice(2),
+      fechaHora:new Date().toISOString(),
+      usuario:'Operador',
+      tipo:selectedTipo,
+      campos:{...formValues},
+      folio:String(formValues['FOLIO']||''),
+      resolucion:resStr,
+      nombreArchivo:nombre
+      // _buf ELIMINADO — se regenera desde campos cuando se necesita
+    };
     historial.unshift(reg);
-    localStorage.setItem('ci-historial',JSON.stringify(historial.slice(0,500)));
+    guardarHistorial(); // usa helper con manejo de quota
     document.getElementById('export-nombre').textContent=nombre+'.'+p.formato.toLowerCase();
     const resBadge=document.getElementById('export-res-badge');
     if(resStr){resBadge.style.display='inline-block';resBadge.textContent='📋 Resolución: '+resStr;}
@@ -784,17 +782,28 @@ async function exportarDocumento(){
   }catch(e){toast('Error: '+e.message,'err');}
   finally{btn.disabled=false;btn.textContent='✅ Exportar y Registrar →';}
 }
-function descargarExportado(){if(!exportDocBuffer)return;downloadBuffer(exportDocBuffer,nombreArchivo(selectedTipo,formValues),exportFormato);}
-function resetNuevo(){selectedTipo=null;formValues={};previewDocBuffer=null;exportDocBuffer=null;goTo('nuevo');}
-function redownload(id){
-  const reg=historial.find(r=>r.id===id);
-  if(!reg||!reg._buf){toast('Archivo no disponible (generado en otra sesión). Vuelve a crearlo.','err');return;}
-  downloadBuffer(new Uint8Array(reg._buf).buffer,reg.nombreArchivo,reg._formato);
+function descargarExportado(){
+  if(!exportDocBuffer||!exportTipo)return;
+  downloadBuffer(exportDocBuffer,nombreArchivo(exportTipo,exportCampos),exportFormato);
+}
+function resetNuevo(){
+  selectedTipo=null;formValues={};previewDocBuffer=null;exportDocBuffer=null;
+  exportCampos=null;exportTipo=null;goTo('nuevo');
 }
 
-// ═══════════════════════════════════════════════════════
-//  MOTOR DOCX/PPTX — con fix para placeholders con espacios
-// ═══════════════════════════════════════════════════════
+// ── MOTOR DOCX/PPTX ───────────────────────────────────
+function normalizarPlaceholders(text){
+  return text.replace(/\[\s+([A-ZÁÉÍÓÚÑÜ][A-ZÁÉÍÓÚÑÜ\s]*?)\s*\]/g,(_,p1)=>'['+p1.trim()+']')
+             .replace(/\[([A-ZÁÉÍÓÚÑÜ][A-ZÁÉÍÓÚÑÜ\s]*?)\s+\]/g,(_,p1)=>'['+p1.trim()+']');
+}
+function reemplazarValores(text,valores){
+  let result=normalizarPlaceholders(text);
+  for(const[k,v]of Object.entries(valores)){
+    const esc=k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    result=result.replace(new RegExp('\\[\\s*'+esc+'\\s*\\]','gi'),v);
+  }
+  return result;
+}
 async function procesarPlantilla(archivo,formato,valores){
   if(!TEMPLATES_DATA[archivo])throw new Error('Plantilla no encontrada: '+archivo);
   const b64=TEMPLATES_DATA[archivo];
@@ -805,25 +814,8 @@ async function procesarPlantilla(archivo,formato,valores){
   if(formato==='PPTX')return procesarPPTX(buf.buffer,valores);
   throw new Error('Formato no soportado');
 }
-
-// Normaliza placeholders con espacios: [ HORA INGLES] → [HORA INGLES]
-function normalizarPlaceholders(text){
-  return text.replace(/\[\s+([A-ZÁÉÍÓÚÑÜ][A-ZÁÉÍÓÚÑÜ\s]*?)\s*\]/g,(m,p1)=>'['+p1.trim()+']')
-             .replace(/\[([A-ZÁÉÍÓÚÑÜ][A-ZÁÉÍÓÚÑÜ\s]*?)\s+\]/g,(m,p1)=>'['+p1.trim()+']');
-}
-
-function reemplazarValores(text,valores){
-  let result=normalizarPlaceholders(text);
-  for(const[k,v]of Object.entries(valores)){
-    const esc=k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
-    result=result.replace(new RegExp('\\[\\s*'+esc+'\\s*\\]','gi'),v);
-  }
-  return result;
-}
-
 function procesarDOCX(ab,valores){
-  const zip=new JSZip();
-  return zip.loadAsync(ab).then(z=>{
+  return new JSZip().loadAsync(ab).then(z=>{
     const doc=z.file('word/document.xml');
     if(!doc)throw new Error('document.xml no encontrado');
     return doc.async('string').then(xml=>{
@@ -841,7 +833,7 @@ function normalizarDOCX(xml,valores){
     const fullText=runs.map(r=>r.text).join('');
     const normalized=normalizarPlaceholders(fullText);
     if(!/\[[A-Z]/.test(normalized))return para;
-    let replaced=reemplazarValores(normalized,valores);
+    const replaced=reemplazarValores(normalized,valores);
     if(replaced===fullText)return para;
     let mod=para;let first=true;
     for(const run of runs){
@@ -852,8 +844,7 @@ function normalizarDOCX(xml,valores){
   });
 }
 function procesarPPTX(ab,valores){
-  const zip=new JSZip();
-  return zip.loadAsync(ab).then(z=>{
+  return new JSZip().loadAsync(ab).then(z=>{
     const slides=Object.keys(z.files).filter(f=>/^ppt\/slides\/slide\d+\.xml$/.test(f));
     return Promise.all(slides.map(sf=>z.file(sf).async('string').then(xml=>{z.file(sf,procesarSlideXML(xml,valores));}))).then(()=>z.generateAsync({type:'arraybuffer',compression:'DEFLATE'}));
   });
@@ -866,7 +857,7 @@ function procesarSlideXML(xml,valores){
     const fullText=runs.map(r=>r.text).join('');
     const normalized=normalizarPlaceholders(fullText);
     if(!/\[[A-Z]/.test(normalized))return para;
-    let replaced=reemplazarValores(normalized,valores);
+    const replaced=reemplazarValores(normalized,valores);
     if(replaced===fullText)return para;
     let mod=para;let first=true;
     for(const run of runs){
